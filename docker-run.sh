@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# without qt
 # docker run --rm --name ros -v "$(pwd):/build" --workdir "/build" -it osrf/ros:jazzy-desktop
+# For run qt app
 docker run \
 	--rm \
 	--name ros \

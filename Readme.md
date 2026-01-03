@@ -2,7 +2,9 @@
 
 ```sh
 # Build
-./build-docker.sh # Run container
+./build-docker.sh
+
+# Run container
 ./docker-run.sh
 
 # Exec to container
@@ -32,7 +34,10 @@ services:
 * `ros2 node list` – список активных нод в системе;
 * `rqt_graph` – визуальное представление графа вычислений (какие ноды запущены и как они соединены топиками).
 
+### Заметки
+
 ```sh
 ros2 topic pub /chatter std_msgs/msg/String "{data: 'Hello, ROS2'}"
 ros2 topic echo /chatter
+ros2 run turtlesim turtlesim_node
 ```

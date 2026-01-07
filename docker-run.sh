@@ -7,6 +7,7 @@ docker run \
 	--rm \
 	--name ros \
 	-v "$(pwd):/build" \
+	-v "./src/ros_entrypoint.sh:/ros_entrypoint.sh" \
 	--workdir "/build" \
 	-e XDG_RUNTIME_DIR=/tmp \
 	-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \

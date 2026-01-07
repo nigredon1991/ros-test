@@ -8,6 +8,7 @@
 ./docker-run.sh
 
 # Exec to container
+# First time
 docker exec -it ros /ros_entrypoint.sh bash
 ```
 
@@ -40,4 +41,12 @@ services:
 ros2 topic pub /chatter std_msgs/msg/String "{data: 'Hello, ROS2'}"
 ros2 topic echo /chatter
 ros2 run turtlesim turtlesim_node
+
+# packages
+cd src
+ros2 pkg create --build-type ament_python talker
+ros2 pkg create --build-type ament_python listener
+# create packages
+cd ..
+colcon build
 ```

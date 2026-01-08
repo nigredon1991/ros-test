@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo systemctl reload-or-restart docker
 
 # without qt
 # docker run --rm --name ros -v "$(pwd):/build" --workdir "/build" -it osrf/ros:jazzy-desktop

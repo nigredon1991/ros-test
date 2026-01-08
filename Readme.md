@@ -41,7 +41,7 @@ services:
 ros2 topic pub /chatter std_msgs/msg/String "{data: 'Hello, ROS2'}"
 ros2 topic echo /chatter
 ros2 run turtlesim turtlesim_node
-
+ros2 run my_turtle_controller turtle_mover
 # packages
 cd src
 ros2 pkg create --build-type ament_python talker
@@ -49,4 +49,6 @@ ros2 pkg create --build-type ament_python listener
 # create packages
 cd ..
 colcon build
+colcon build --packages-select talker
+
 ```

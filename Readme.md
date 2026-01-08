@@ -51,4 +51,9 @@ cd ..
 colcon build
 colcon build --packages-select talker
 
+# Сервисы
+ros2 service list
+ros2 service type /spawn
+ros2 interface show turtlesim/srv/Spawn
+ros2 service call /spawn turtlesim/srv/Spawn "{x: 2.0, y: 5.0, theta: 0.0, name: 'my_turtle'}"
 ```

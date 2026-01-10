@@ -56,4 +56,8 @@ ros2 service list
 ros2 service type /spawn
 ros2 interface show turtlesim/srv/Spawn
 ros2 service call /spawn turtlesim/srv/Spawn "{x: 2.0, y: 5.0, theta: 0.0, name: 'my_turtle'}"
+
+ros2 pkg create my_service_interfaces
+ros2 run my_service_server velocity_server
+ ros2 service call /set_velocity my_service_interfaces/srv/SetVelocity "{linear: 2.0, angular: 5.0}"
 ```

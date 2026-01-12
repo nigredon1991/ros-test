@@ -2,6 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
+from geometry_msgs.msg import Twist
 
 # Импортируем сгенерированный модуль из пакета интерфейсов
 from my_service_interfaces.srv import SetVelocity
@@ -16,6 +17,7 @@ class VelocityServiceServer(Node):
             'set_velocity',
             self.handle_set_velocity
         )
+        self.cmd_vel_publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
         self.get_logger().info('Service /set_velocity is up and running!')
 
     def handle_set_velocity(self, request, response):
@@ -26,8 +28,14 @@ class VelocityServiceServer(Node):
         """
         linear = request.linear
         angular = request.angular
-
+        # Формируем Twist
         self.get_logger().info(f'Received velocity request: linear={linear}, angular={angular}')
+        twist_msg = Twist()
+        twist_msg.linear.x = float(linear)
+        twist_msg.angular.z = float(angular)
+
+        # Публикуем в топик /turtle1/cmd_vel
+        self.cmd_vel_publisher.publish(twist_msg)
 
         # Считаем, что сервер «задаёт» эту скорость (пока здесь просто логика-заглушка)
         success = True
